@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sreyrea Han | Portfolio</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap');
+        
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            scroll-behavior: smooth;
+            overflow-x: hidden;
+        }
+
+        /* Custom Animations */
+        @keyframes float {
+            0% { transform: translateY(0px) rotate(-2deg); }
+            50% { transform: translateY(-20px) rotate(2deg); }
+            100% { transform: translateY(0px) rotate(-2deg); }
+        }
+
+        @keyframes blob-float {
+            0% { transform: translate(0, 0) scale(1); }
+            33% { transform: translate(30px, -50px) scale(1.1); }
+            66% { transform: translate(-20px, 20px) scale(0.9); }
+            100% { transform: translate(0, 0) scale(1); }
+        }
+
+        .animate-float {
+            animation: float 6s ease-in-out infinite;
+        }
+
+        .blob {
+            position: absolute;
+            z-index: -1;
+            filter: blur(60px);
+            opacity: 0.4;
+            animation: blob-float 10s infinite alternate;
+        }
+
+        /* Scroll Reveal Utility */
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s cubic-bezier(0.2, 1, 0.3, 1);
+        }
+
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .stagger-item {
+            opacity: 0;
+            transform: scale(0.9);
+            transition: all 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+        }
+
+        .reveal.active .stagger-item {
+            opacity: 1;
+            transform: scale(1);
+        }
+
+        /* Glassmorphism */
+        .glass {
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+        }
+
+        .project-card:hover .project-image {
+            transform: scale(1.05);
+        }
+
+        .nav-link {
+            position: relative;
+        }
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -4px;
+            left: 0;
+            background-color: #2563eb;
+            transition: width 0.3s ease;
+        }
+        .nav-link:hover::after {
+            width: 100%;
+        }
+    </style>
+</head>
+<body class="bg-blue-50/30 text-slate-900">
+
+    <!-- Decorative Blobs -->
+    <div class="blob w-96 h-96 bg-blue-400 top-0 -left-20"></div>
+    <div class="blob w-80 h-80 bg-purple-400 bottom-0 -right-20"></div>
+    <div class="blob w-64 h-64 bg-pink-300 top-1/2 left-1/2"></div>
+
+    <!-- Navigation -->
+    <nav class="fixed top-0 w-full z-50 glass border-b border-white/50">
+        <div class="max-w-6xl mx-auto px-6 h-20 flex items-center justify-between">
+            <span class="font-extrabold text-2xl tracking-tighter text-blue-600">SREYREA<span class="text-slate-900">.HAN</span></span>
+            <div class="hidden md:flex space-x-10 font-bold text-sm text-slate-600 uppercase tracking-widest">
+                <a href="#about" class="nav-link">About</a>
+                <a href="#skills" class="nav-link">Skills</a>
+                <a href="#experience" class="nav-link">Path</a>
+                <a href="#projects" class="nav-link">Works</a>
+                <a href="#contact" class="px-6 py-2 bg-blue-600 text-white rounded-full hover:bg-blue-700 hover:shadow-lg transition-all transform hover:-translate-y-1">Contact</a>
+            </div>
+            <button class="md:hidden p-2 text-slate-900"><i class="fas fa-bars text-2xl"></i></button>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <header class="pt-48 pb-24 px-6 relative overflow-hidden">
+        <div class="max-w-6xl mx-auto flex flex-col md:flex-row items-center gap-16">
+            <div class="md:w-1/2 space-y-8 text-center md:text-left">
+                <div class="inline-flex items-center gap-2 px-4 py-2 bg-blue-100/50 text-blue-700 rounded-full text-xs font-black uppercase tracking-widest animate-bounce">
+                    <span class="w-2 h-2 bg-blue-600 rounded-full"></span>
+                    Available for new projects
+                </div>
+                <h1 class="text-6xl md:text-8xl font-black text-slate-900 leading-[0.9] tracking-tighter">
+                    Crafting <span class="text-blue-600">Digital</span> Experiences.
+                </h1>
+                <p class="text-xl text-slate-600 max-w-lg leading-relaxed font-medium">
+                    I'm Sreyrea, a passionate Web Developer and IT Lecturer dedicated to building clean, friendly, and efficient software.
+                </p>
+                <div class="flex flex-wrap justify-center md:justify-start gap-6 pt-4">
+                    <a href="#projects" class="group px-10 py-5 bg-slate-900 text-white rounded-3xl font-bold shadow-2xl hover:shadow-blue-500/20 transition-all flex items-center gap-3 overflow-hidden relative">
+                        <span class="relative z-10">See my work</span>
+                        <i class="fas fa-arrow-right group-hover:translate-x-2 transition-transform relative z-10"></i>
+                        <div class="absolute inset-0 bg-blue-600 translate-y-full group-hover:translate-y-0 transition-transform"></div>
+                    </a>
+                    <div class="flex items-center gap-4">
+                        <a href="https://github.com/sreyrea" target="_blank" class="w-12 h-12 bg-white rounded-2xl flex items-center justify-center text-slate-600 hover:text-blue-600 shadow-sm transition-all"><i class="fab fa-github text-xl"></i></a>
+                        <a href="https://www.linkedin.com/in/han-srey-rea-40a011275/" target="_blank" class="w-12 h-12 bg-white rounded-2xl flex items-center justify-center text-slate-600 hover:text-blue-600 shadow-sm transition-all"><i class="fab fa-linkedin text-xl"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="md:w-1/2 flex justify-center">
+                <div class="relative animate-float">
+                    <div class="w-64 h-80 md:w-80 md:h-[450px] bg-blue-600 rounded-[4rem] relative z-10 overflow-hidden shadow-2xl border-8 border-white">
+                        <img src="https://ui-avatars.com/api/?name=Sreyrea+Han&background=2563eb&color=fff&size=512" alt="Sreyrea Han" class="w-full h-full object-cover">
+                    </div>
+                    <!-- Decorative shapes -->
+                    <div class="absolute -top-6 -right-6 w-24 h-24 bg-yellow-400 rounded-full z-0 opacity-50"></div>
+                    <div class="absolute -bottom-10 -left-10 w-40 h-40 bg-purple-400 rounded-[3rem] z-0 opacity-30 rotate-12"></div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- About Me -->
+    <section id="about" class="py-32 px-6 reveal">
+        <div class="max-w-6xl mx-auto glass rounded-[4rem] p-12 md:p-20 shadow-xl border-white relative">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-20 items-center">
+                <div class="space-y-8">
+                    <h3 class="text-4xl font-black text-slate-900">Hi, I'm Sreyrea! 👋</h3>
+                    <p class="text-slate-600 leading-relaxed text-lg font-medium">
+                        Based in <span class="text-blue-600 font-bold underline decoration-blue-200 decoration-4">Phnom Penh</span>, I bridge the gap between academic theory and practical software engineering. From the peaceful city of Battambang to the lecture halls of the Digital University of Cambodia, my journey is fueled by a love for constant learning.
+                    </p>
+                    <div class="flex gap-12 pt-4">
+                        <div class="text-center">
+                            <span class="block text-4xl font-black text-blue-600">07+</span>
+                            <span class="text-xs font-bold text-slate-400 uppercase tracking-widest">Projects</span>
+                        </div>
+                        <div class="text-center">
+                            <span class="block text-4xl font-black text-purple-600">02+</span>
+                            <span class="text-xs font-bold text-slate-400 uppercase tracking-widest">Experience</span>
+                        </div>
+                        <div class="text-center">
+                            <span class="block text-4xl font-black text-green-500">Lecturer</span>
+                            <span class="text-xs font-bold text-slate-400 uppercase tracking-widest">Current</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="grid grid-cols-2 gap-6">
+                    <div class="stagger-item p-8 bg-blue-50 rounded-[2rem] border border-blue-100 hover:bg-blue-100 transition-colors">
+                        <i class="fas fa-search text-2xl text-blue-500 mb-4"></i>
+                        <h5 class="font-bold mb-2">Researcher</h5>
+                        <p class="text-xs text-slate-500 leading-relaxed">Always exploring new tech trends and tools.</p>
+                    </div>
+                    <div class="stagger-item p-8 bg-purple-50 rounded-[2rem] border border-purple-100 hover:bg-purple-100 transition-colors" style="transition-delay: 0.1s">
+                        <i class="fas fa-heart text-2xl text-purple-500 mb-4"></i>
+                        <h5 class="font-bold mb-2">Helpful</h5>
+                        <p class="text-xs text-slate-500 leading-relaxed">Dedicated to helping students and colleagues grow.</p>
+                    </div>
+                    <div class="stagger-item p-8 bg-green-50 rounded-[2rem] border border-green-100 hover:bg-green-100 transition-colors" style="transition-delay: 0.2s">
+                        <i class="fas fa-book text-2xl text-green-500 mb-4"></i>
+                        <h5 class="font-bold mb-2">Reader</h5>
+                        <p class="text-xs text-slate-500 leading-relaxed">Fueling my creativity through books and shared ideas.</p>
+                    </div>
+                    <div class="stagger-item p-8 bg-yellow-50 rounded-[2rem] border border-yellow-100 hover:bg-yellow-100 transition-colors" style="transition-delay: 0.3s">
+                        <i class="fas fa-shield-alt text-2xl text-yellow-500 mb-4"></i>
+                        <h5 class="font-bold mb-2">Honest</h5>
+                        <p class="text-xs text-slate-500 leading-relaxed">Transparency and integrity in every project.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills" class="py-32 px-6">
+        <div class="max-w-6xl mx-auto">
+            <div class="flex flex-col md:flex-row justify-between items-end mb-16 gap-6 reveal">
+                <div class="max-w-xl">
+                    <h3 class="text-5xl font-black mb-6 tracking-tighter">My Superpowers ⚡</h3>
+                    <p class="text-slate-500 font-medium">A mix of Computer Science fundamentals and modern development frameworks.</p>
+                </div>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-10 reveal">
+                <!-- Group 1 -->
+                <div class="stagger-item glass p-10 rounded-[3rem] hover:shadow-2xl transition-all border-blue-100 hover:-translate-y-2">
+                    <div class="w-14 h-14 bg-blue-100 text-blue-600 rounded-2xl flex items-center justify-center mb-8">
+                        <i class="fas fa-code text-2xl"></i>
+                    </div>
+                    <h4 class="text-2xl font-black mb-6">Web & Backend</h4>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="px-4 py-2 bg-slate-100 rounded-full text-xs font-bold">Laravel</span>
+                        <span class="px-4 py-2 bg-slate-100 rounded-full text-xs font-bold">NodeJS</span>
+                        <span class="px-4 py-2 bg-slate-100 rounded-full text-xs font-bold">VueJS</span>
+                        <span class="px-4 py-2 bg-slate-100 rounded-full text-xs font-bold">PHP & MySQL</span>
+                        <span class="px-4 py-2 bg-slate-100 rounded-full text-xs font-bold">JavaScript</span>
+                        <span class="px-4 py-2 bg-slate-100 rounded-full text-xs font-bold">SASS/Tailwind</span>
+                    </div>
+                </div>
+
+                <!-- Group 2 -->
+                <div class="stagger-item glass p-10 rounded-[3rem] hover:shadow-2xl transition-all border-purple-100 hover:-translate-y-2" style="transition-delay: 0.1s">
+                    <div class="w-14 h-14 bg-purple-100 text-purple-600 rounded-2xl flex items-center justify-center mb-8">
+                        <i class="fas fa-terminal text-2xl"></i>
+                    </div>
+                    <h4 class="text-2xl font-black mb-6">CS Core</h4>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="px-4 py-2 bg-slate-100 rounded-full text-xs font-bold">Algorithms (C/C++)</span>
+                        <span class="px-4 py-2 bg-slate-100 rounded-full text-xs font-bold">Advanced OOP</span>
+                        <span class="px-4 py-2 bg-slate-100 rounded-full text-xs font-bold">Visual C#</span>
+                        <span class="px-4 py-2 bg-slate-100 rounded-full text-xs font-bold">Network Security</span>
+                        <span class="px-4 py-2 bg-slate-100 rounded-full text-xs font-bold">Data Structures</span>
+                        <span class="px-4 py-2 bg-slate-100 rounded-full text-xs font-bold">MIS</span>
+                    </div>
+                </div>
+
+                <!-- Group 3 -->
+                <div class="stagger-item glass p-10 rounded-[3rem] hover:shadow-2xl transition-all border-green-100 hover:-translate-y-2" style="transition-delay: 0.2s">
+                    <div class="w-14 h-14 bg-green-100 text-green-600 rounded-2xl flex items-center justify-center mb-8">
+                        <i class="fas fa-mobile-alt text-2xl"></i>
+                    </div>
+                    <h4 class="text-2xl font-black mb-6">Mobile & Systems</h4>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="px-4 py-2 bg-slate-100 rounded-full text-xs font-bold">Android App</span>
+                        <span class="px-4 py-2 bg-slate-100 rounded-full text-xs font-bold">iOS App</span>
+                        <span class="px-4 py-2 bg-slate-100 rounded-full text-xs font-bold">Cisco Networking</span>
+                        <span class="px-4 py-2 bg-slate-100 rounded-full text-xs font-bold">System Analysis</span>
+                        <span class="px-4 py-2 bg-slate-100 rounded-full text-xs font-bold">OS Open Source</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Experience -->
+    <section id="experience" class="py-32 px-6 bg-slate-900 text-white overflow-hidden relative">
+        <div class="max-w-4xl mx-auto relative z-10">
+            <h3 class="text-4xl font-black mb-20 text-center reveal">My Professional Journey 🚀</h3>
+            
+            <div class="space-y-16">
+                <div class="flex flex-col md:flex-row gap-8 reveal">
+                    <div class="md:w-1/3">
+                        <span class="text-blue-400 font-black tracking-widest text-sm">2024 - PRESENT</span>
+                    </div>
+                    <div class="md:w-2/3 border-l-4 border-blue-600 pl-10 relative">
+                        <div class="absolute -left-3 top-0 w-5 h-5 bg-blue-600 rounded-full"></div>
+                        <h4 class="text-2xl font-black mb-2">Lecturer / IT Teacher</h4>
+                        <p class="text-slate-400 font-bold mb-4 uppercase text-xs tracking-widest">Digital University of Cambodia</p>
+                        <p class="text-slate-400 leading-relaxed">Inspiring students through programming and Computer Science fundamentals, bridging the gap between theory and industry.</p>
+                    </div>
+                </div>
+
+                <div class="flex flex-col md:flex-row gap-8 reveal">
+                    <div class="md:w-1/3 text-slate-500">
+                        <span class="font-black tracking-widest text-sm">2023 - 2024</span>
+                    </div>
+                    <div class="md:w-2/3 border-l-4 border-slate-700 pl-10 relative">
+                        <div class="absolute -left-3 top-0 w-5 h-5 bg-slate-700 rounded-full"></div>
+                        <h4 class="text-2xl font-black mb-2">Full-stack Developer</h4>
+                        <p class="text-slate-400 font-bold mb-4 uppercase text-xs tracking-widest">Codingate Technology Co., Ltd</p>
+                        <p class="text-slate-400 leading-relaxed">Developed high-performance web solutions and collaborated with a world-class team to ship production software.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Decorative bg text -->
+        <span class="absolute -bottom-10 -right-20 text-[15rem] font-black text-white/5 pointer-events-none">WORK</span>
+    </section>
+
+    <!-- Contact -->
+    <footer id="contact" class="py-32 px-6">
+        <div class="max-w-6xl mx-auto">
+            <div class="glass rounded-[4rem] p-12 md:p-24 text-center space-y-10 relative overflow-hidden reveal">
+                <div class="relative z-10">
+                    <h3 class="text-5xl md:text-7xl font-black text-slate-900 tracking-tighter mb-6">Let's create something <span class="text-blue-600 underline decoration-blue-200 decoration-8 underline-offset-8">amazing</span>.</h3>
+                    <p class="text-slate-500 text-xl font-medium mb-12">I'm always open to new ideas and friendly collaborations.</p>
+                    
+                    <div class="flex flex-wrap justify-center gap-6">
+                        <a href="mailto:sreyrea.han@student.passerellesnumeriques.org" class="px-10 py-5 bg-blue-600 text-white rounded-3xl font-black shadow-xl shadow-blue-500/30 hover:scale-105 transition-transform">Email Me</a>
+                        <a href="tel:0883651987" class="px-10 py-5 bg-white text-slate-900 border-2 border-slate-100 rounded-3xl font-black hover:bg-slate-50 transition-colors">088 365 1987</a>
+                    </div>
+                </div>
+                
+                <div class="pt-20 flex justify-center gap-8 relative z-10">
+                    <a href="https://github.com/sreyrea" target="_blank" class="w-14 h-14 rounded-2xl bg-slate-100 flex items-center justify-center text-slate-400 hover:text-blue-600 hover:bg-white hover:shadow-xl transition-all transform hover:-rotate-6" title="GitHub"><i class="fab fa-github text-2xl"></i></a>
+                    <a href="https://www.linkedin.com/in/han-srey-rea-40a011275/" target="_blank" class="w-14 h-14 rounded-2xl bg-slate-100 flex items-center justify-center text-slate-400 hover:text-blue-600 hover:bg-white hover:shadow-xl transition-all transform hover:rotate-6" title="LinkedIn"><i class="fab fa-linkedin text-2xl"></i></a>
+                    <a href="https://www.facebook.com/share/1CTtw7GCD7/?mibextid=wwXIfr" target="_blank" class="w-14 h-14 rounded-2xl bg-slate-100 flex items-center justify-center text-slate-400 hover:text-blue-600 hover:bg-white hover:shadow-xl transition-all transform hover:-rotate-6" title="Facebook"><i class="fab fa-facebook text-2xl"></i></a>
+                </div>
+            </div>
+            
+            <div class="flex flex-col md:flex-row justify-between items-center mt-12 gap-6">
+                <p class="text-slate-400 font-bold text-xs uppercase tracking-[0.3em]">© 2024 Sreyrea Han — Built with ❤️ and Code</p>
+                <div class="flex gap-4">
+                    <a href="https://github.com/sreyrea" target="_blank" class="text-slate-400 hover:text-blue-600 transition"><i class="fab fa-github"></i></a>
+                    <a href="https://www.linkedin.com/in/han-srey-rea-40a011275/" target="_blank" class="text-slate-400 hover:text-blue-600 transition"><i class="fab fa-linkedin"></i></a>
+                    <a href="https://www.facebook.com/share/1CTtw7GCD7/?mibextid=wwXIfr" target="_blank" class="text-slate-400 hover:text-blue-600 transition"><i class="fab fa-facebook"></i></a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Intersection Observer for Scroll Animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('active');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+        // Smooth reveal for individual skill items
+        document.querySelectorAll('.stagger-item').forEach((el, index) => {
+            el.style.transitionDelay = `${index * 0.1}s`;
+        });
+    </script>
+</body>
+</html>
